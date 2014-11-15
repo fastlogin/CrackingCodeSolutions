@@ -41,6 +41,33 @@ public class StringsandArrays {
 		}
 		System.out.println(""+time);
 		return true;
+	}
+	
+	public static void quickSort(char[] input){
+		if(input.length == 1){
+			return;
+		}
+		int pivot = input.length / 2;
+		int point1 = 0;
+		int point2 = input.length;
+		while(point1 < point2 && (point1 < input.length && point2 >= 0)){
+			if(input[point1] > input[pivot] && input[point2] < input[pivot]){
+				char temp = input[point2];
+				input[point2] = input[point1];
+				input[point1] = temp;
+				point1++;
+				point2--;
+			}
+			else if(input[point1] <= input[pivot]){
+				point1++;
+			}
+			if(input[point2] > input[pivot]){
+				point2--;
+			}
+		}
+	}
+	
+	public static boolean uniqueString3(char[] input){
 		
 	}
 	/**
