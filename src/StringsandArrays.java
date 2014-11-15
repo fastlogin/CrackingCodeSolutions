@@ -42,34 +42,7 @@ public class StringsandArrays {
 		System.out.println(""+time);
 		return true;
 	}
-	
-	public static void quickSort(char[] input){
-		if(input.length == 1){
-			return;
-		}
-		int pivot = input.length / 2;
-		int point1 = 0;
-		int point2 = input.length;
-		while(point1 < point2 && (point1 < input.length && point2 >= 0)){
-			if(input[point1] > input[pivot] && input[point2] < input[pivot]){
-				char temp = input[point2];
-				input[point2] = input[point1];
-				input[point1] = temp;
-				point1++;
-				point2--;
-			}
-			else if(input[point1] <= input[pivot]){
-				point1++;
-			}
-			if(input[point2] > input[pivot]){
-				point2--;
-			}
-		}
-	}
-	
-	public static boolean uniqueString3(char[] input){
-		
-	}
+
 	/**
 	 * Reverses a string.
 	 * @Time: O(N) | Best: O(N) | Worst: O(N)
@@ -131,8 +104,8 @@ public class StringsandArrays {
 	}
 	
 	/**
-	 * Replaces the spaces of a string with 20% but assumes that the
-	 * string is an array with enough space to fit the extra characters.
+	 * Compresses the characters of a string to how many times
+	 * they appear consecutively.
 	 * @Time: O(N) | Best: O(N) | Worst: O(N)
 	 * @Space: O(N)
 	 */
@@ -289,7 +262,7 @@ public class StringsandArrays {
 	
 	public static void main(String [ ] args){
 		
-		/** Writing tests soon.
+		//Tests for replace
 		char[] replaceTest1 = new char[10];
 		replaceTest1[0] = 'a';
 		replaceTest1[1] = 'b';
@@ -308,7 +281,7 @@ public class StringsandArrays {
 		int[][] matrixTest2 = {{1,2,3},{5,0,7},{9,10,11}};
 		replaceWithZero(matrixTest2);
 		printMatrix(matrixTest2);
-		**/
+	
 		
 	}
 
