@@ -31,6 +31,10 @@ public class LinkedList {
 		return this.next;
 	}
 	
+	public void setNext(LinkedList d){
+		this.next = d;
+	}
+	
 	public int getLength(){
 		int length = 0;
 		LinkedList counter = this.head;
