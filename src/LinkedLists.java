@@ -47,6 +47,50 @@ public class LinkedLists {
 		middle = middle.getNext();
 	}
 	
+	public static void partition(LinkedList input, int val){
+		LinkedList counter = input.getHead();
+		LinkedList counter2 = input.getHead().getNext();
+		int count = 0;
+		if(counter.getData() <= val){
+			int temp = counter.getData();
+			input.removeHead();
+			input.addHead(temp);
+		}
+		else{
+			int temp = counter.getData();
+			input.removeHead();
+			input.addTail(temp);
+		}
+		while(count < input.getLength()){
+			if(counter2.getData() <= val){
+				LinkedList temp = counter2;
+				counter.setNext(counter2.getNext());
+				input.addTail(temp.getData());
+				counter = counter.getNext();
+				counter2 = counter.getNext().getNext();
+				count+=2;		
+			}
+			else{
+				LinkedList temp = counter2;
+				counter.setNext(counter2.getNext());
+				input.addHead(temp.getData());
+				counter = counter.getNext();
+				counter2 = counter.getNext().getNext();
+				count+=2;	
+			}
+			
+		}
+	}
+	
+	public static int add(LinkedList input1, LinkedList input2){
+		int digit = 1;
+		int result = 0;
+		if(input1.getLength() > input2.getLength()){
+			
+		}
+		while()
+	}
+	
 	public static void main(String[] args){
 		LinkedList test = new LinkedList(0);
 		test.addTail(1);
@@ -65,8 +109,14 @@ public class LinkedLists {
 		removeDuplicates(test);
 		test.print();
 		kthFromEnd(test,8);
-		removeMiddle(test.getHead());
+		partition(test, 7);
 		test.print();
+		LinkedList add1 = new LinkedList(0);
+		add1.addTail(2);
+		add1.addTail(4);
+		LinkedList add2 = new LinkedList(9);
+		add1.addTail(6);
+		
 	}
 
 }
