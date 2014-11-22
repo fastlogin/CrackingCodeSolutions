@@ -85,10 +85,57 @@ public class LinkedLists {
 	public static int add(LinkedList input1, LinkedList input2){
 		int digit = 1;
 		int result = 0;
+		LinkedList count1;
+		LinkedList count2;
 		if(input1.getLength() > input2.getLength()){
-			
+			count1 = input2.getHead();
+			count2 = input1.getHead();
 		}
-		while()
+		else{
+			count1 = input1.getHead();
+			count2 = input2.getHead();
+		}
+		while(count1 != null){
+			result += count1.getData() * digit + count2.getData() * digit;
+			count1 = count1.getNext();
+			count2 = count2.getNext();
+			digit = digit * 10;
+		}
+		while(count2 != null){
+			result += count2.getData() * digit;
+			count2 = count2.getNext();
+			digit = digit * 10;
+		}
+		return result;
+	}
+	
+	public static int add2(LinkedList input1, LinkedList input2){
+		int result = 0;
+		LinkedList count1;
+		LinkedList count2;
+		if(input1.getLength() > input2.getLength()){
+			count1 = input2.getHead();
+			count2 = input1.getHead();
+		}
+		else{
+			count1 = input1.getHead();
+			count2 = input2.getHead();
+		}
+		int digit = (count1.getLength()-1) * 10;
+		int digit2 = (count2.getLength()-1) * 10;
+		while(count1 != null){
+			result += count1.getData() * digit + count2.getData() * digit2;
+			count1 = count1.getNext();
+			count2 = count2.getNext();
+			digit = digit / 10;
+			digit2 = digit2 / 10;
+		}
+		while(count2 != null){
+			result += count2.getData() * digit2;
+			count2 = count2.getNext();
+			digit2 = digit2 / 10;
+		}
+		return result;
 	}
 	
 	public static void main(String[] args){
@@ -111,11 +158,12 @@ public class LinkedLists {
 		kthFromEnd(test,8);
 		partition(test, 7);
 		test.print();
-		LinkedList add1 = new LinkedList(0);
+		LinkedList add1 = new LinkedList(1);
 		add1.addTail(2);
-		add1.addTail(4);
 		LinkedList add2 = new LinkedList(9);
-		add1.addTail(6);
+		add2.addTail(6);
+		int ans = add2(add1,add2);
+		System.out.println(""+ans);
 		
 	}
 
