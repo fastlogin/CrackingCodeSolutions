@@ -45,6 +45,18 @@ public class LinkedList {
 		return length;
 	}
 	
+	public LinkedList getNode(int a){
+		if (a > this.getLength()) {
+			return null;
+		}
+		LinkedList counter = this.head;
+		while(a > 1){
+			counter = counter.getNext();
+			a--;
+		}
+		return counter;
+	}
+	
 	public void addTail(int d){
 		LinkedList toAdd = new LinkedList(d);
 		this.getTail().next = toAdd;

@@ -138,7 +138,45 @@ public class LinkedLists {
 		return result;
 	}
 	
+	public static boolean isPalindrome(LinkedList input){
+		int fHalfEnd;
+		int sHalfStart;
+		if(input.getLength() == 1){
+			return true;
+		}
+		if(input.getLength() == 2){
+			return false;
+		}
+		if(input.getLength()%2 == 1){
+			fHalfEnd = input.getLength()/2 + 1;
+			
+		}
+		else{
+			fHalfEnd = input.getLength()/2;
+		}
+		int[] fHalf = new int[fHalfEnd];
+		sHalfStart = input.getLength()/2 + 1;
+		int[] sHalf = new int[fHalfEnd];
+		int i = 0;
+		int j = fHalfEnd - 1;
+		LinkedList counter1 = input.getHead();
+		LinkedList counter2 = input.getNode(sHalfStart);
+		while(i < fHalfEnd){
+			fHalf[i] = counter1.getData();
+			counter1 = counter1.getNext();
+			i++;
+		}
+		while(j >= 0){
+			sHalf[j] = counter2.getData();
+			counter2 = counter2.getNext();
+			j--;
+		}
+		return Arrays.equals(fHalf, sHalf);
+	}
+	
 	public static void main(String[] args){
+		
+		//Testing for removeDuplicates
 		LinkedList test = new LinkedList(0);
 		test.addTail(1);
 		test.addTail(2);
@@ -155,15 +193,38 @@ public class LinkedLists {
 		test.print();
 		removeDuplicates(test);
 		test.print();
+		
+		//Testing for kthFromEnd
 		kthFromEnd(test,8);
+		
+		//Testing for partition
 		partition(test, 7);
 		test.print();
+		
+		//Testing for add1 and add2
 		LinkedList add1 = new LinkedList(1);
 		add1.addTail(2);
 		LinkedList add2 = new LinkedList(9);
 		add2.addTail(6);
 		int ans = add2(add1,add2);
 		System.out.println(""+ans);
+		
+		//Testing for isPalindrome
+		test.print();
+		test.removeHead();
+		LinkedList palindrome = new LinkedList(0);
+		palindrome.addTail(1);
+		palindrome.addTail(1);
+		palindrome.addTail(2);
+		palindrome.addTail(1);
+		palindrome.addTail(1);
+		palindrome.addTail(0);
+		LinkedList notPalindrome = new LinkedList(2);
+		notPalindrome.addTail(1);
+		notPalindrome.addTail(1);
+		notPalindrome.addTail(1);
+		System.out.println(""+isPalindrome(palindrome));
+		System.out.println(""+isPalindrome(notPalindrome));
 		
 	}
 
