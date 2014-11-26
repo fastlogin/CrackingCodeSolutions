@@ -15,8 +15,9 @@ public class Queue {
 	
 	public int dequeue(){
 		if(first != null){
+			int temp = first.data;
 			first = first.next;
-			return first.data;
+			return temp;
 		}
 		return 0;
 	}
