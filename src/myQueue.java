@@ -30,10 +30,7 @@ public class myQueue {
 		}
 		return front.pop();
 	}
-	
-	
 
-	
 	public static void main(String[] args){
 		
 	}
