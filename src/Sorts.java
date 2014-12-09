@@ -98,10 +98,45 @@ public class Sorts {
 		
 	}
 	
+	static void quickHelper(int[] input, int start, int end){
+		if(start == end){
+			return;
+		}
+		if(end == start + 1){
+			if(end < start){
+				int temp = input[end];
+				input[end] = input[start];
+				input[start] = temp;
+				return;
+			}
+		}
+		int i = start;
+		int j = end;
+		int pivot = input[input.length/2];
+		while(i != j ){
+			System.out.println("i: " + i + ", j: " + j);
+			while(input[i] < pivot && i <= end   ){
+				i++;
+			}
+			while(input[j] > pivot && j >= start){
+				j--;
+			}
+			int temp = input[i];
+			input[i] = input[j];
+			input[j] = temp;
+		}
+		quickHelper(input,start,i-1);
+		quickHelper(input,i+1,end);
+	}
+	
+	static void quickSort(int[] input){
+		quickHelper(input,0,input.length -1);
+	}
+	
 	public static void main (String[] args){
 		int[] test = {100,3,4,1,2,6,5,11,7};
-		int[] res = mergeSort(test);
-		print(res);
+	    quickSort(test);
+		print(test);
 	}
 
 }
